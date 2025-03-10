@@ -1,6 +1,10 @@
 {{>header}}
 <div class="container mt-4">
-    <h1 class="mb-3">Events</h1>
+    <h1 style="display: inline" class="mb-3">Events</h1>
+    <!-- Add Event Button -->
+    <button type="button" class="btn btn-success ml-10 mb-3" data-bs-toggle="modal" data-bs-target="#addEventModal">
+        Add Event
+    </button>
 
     <!-- Search Bar -->
     <div class="input-group mb-3">
@@ -51,6 +55,7 @@
 
     <!-- Modal -->
     {{>delete.modal}}
+    {{>eventform.modal}}
 
 </div>
 

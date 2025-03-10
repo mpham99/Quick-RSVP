@@ -30,6 +30,12 @@ app.get('/event/delete/:id', function(req,res) {
     eventModel.deleteEvent(req.params.id, returnHome);
 });
 
+// Create new event
+app.get('/event/add', function (req, res){
+    function returnHome() {res.redirect('/');}
+    eventModel.addEvent(req.query, returnHome);
+});
+
 // App startup
 async function startup() {
     app.listen(8081, function () {
