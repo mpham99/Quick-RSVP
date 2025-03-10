@@ -26,12 +26,20 @@
                     <td>{{formatted_date}}</td>
                     <td>{{description}}</td>
                     <td>
-                        <a href="/rsvps/{{id}}" class="btn btn-primary btn-sm">RSVP</a>
-                        <a href="/delete/{{id}}" class="btn btn-danger btn-sm">Delete</a>
-                        <a href="/updateform/{{id}}" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/rsvps/{{id}}" role="button" class="btn btn-primary btn-sm">RSVP</a>
+                        <a href="#" role="button"
+                           class="btn btn-danger btn-sm delete-btn"
+                           data-bs-toggle="modal"
+                           data-bs-target="#deleteModal"
+                           data-event-id="{{id}}"
+                           data-event-name="{{name}}">
+                            Delete
+                        </a>
+                        <a href="/updateform/{{id}}" role="button" class="btn btn-warning btn-sm">Edit</a>
                     </td>
                 </tr>
                 {{/events}}
+
                 {{^events}}
                 <tr>
                     <td colspan="4" class="text-center">No events found</td>
@@ -40,6 +48,9 @@
             </tbody>
         </table>
     </div>
+
+    <!-- Modal -->
+    {{>delete.modal}}
 
 </div>
 

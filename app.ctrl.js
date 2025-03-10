@@ -24,6 +24,12 @@ app.get('/', function(req,res) {
     eventModel.getAllEvents(renderPage);
 });
 
+// Delete single event
+app.get('/delete/:id', function(req,res) {
+    function returnHome() {res.redirect('/');}
+    eventModel.deleteEvent(req.params.id, returnHome);
+});
+
 // App startup
 async function startup() {
     app.listen(8081, function () {
