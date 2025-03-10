@@ -6,10 +6,11 @@ const rsvpModel = require('./models/rsvp.model');
 const express = require("express");
 const app = express();
 app.use(express.json());
+const path = require('path');
+app.use(express.static(__dirname + "/public"));
 
 // Initialize mustache
 const mustacheExpress = require("mustache-express");
-const {getAllEvents} = require("./models/event.model");
 app.engine("mustache", mustacheExpress());
 app.set("view engine", "mustache");
 app.set("views", __dirname + "/views");
