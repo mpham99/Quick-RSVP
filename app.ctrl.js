@@ -1,17 +1,32 @@
 // Import models
-const eventModel = require('./model/event.model');
-const rsvpModel = require('./model/rsvp.model');
+const eventModel = require('./models/event.model');
+const rsvpModel = require('./models/rsvp.model');
 
 // Initialize express
 const express = require("express");
 const app = express();
 app.use(express.json());
 
+// Initialize mustache
+const mustacheExpress = require("mustache-express");
+const {getAllEvents} = require("./models/event.model");
+app.engine("mustache", mustacheExpress());
+app.set("view engine", "mustache");
+app.set("views", __dirname + "/views");
+
+// ************************* CONTROLLER ACTIONS ****************************
+// Default action
+app.get('/', function(req,res) {
+    function renderPage(eventArray) {
+        res.render('events', { employees: eventArray});
+    }
+    eventModel.getAllEvents(renderPage);
+});
+
 // App startup
 async function startup() {
     app.listen(8081, function () {
-        console.log("App listening on port 3000...");
+        console.log("App listening on port 8081...");
     });
 }
-
 startup();
