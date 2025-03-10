@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Update the delete confirmation button with the correct event link
             const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
-            confirmDeleteBtn.setAttribute("href", `/delete/${eventId}`);
+            confirmDeleteBtn.setAttribute("href", `event/delete/${eventId}`);
         });
     });
 });

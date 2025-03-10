@@ -25,7 +25,7 @@ app.get('/', function(req,res) {
 });
 
 // Delete single event
-app.get('/delete/:id', function(req,res) {
+app.get('/event/delete/:id', function(req,res) {
     function returnHome() {res.redirect('/');}
     eventModel.deleteEvent(req.params.id, returnHome);
 });
