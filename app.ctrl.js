@@ -18,7 +18,7 @@ app.set("views", __dirname + "/views");
 // Default action
 app.get('/', function(req,res) {
     function renderPage(eventArray) {
-        res.render('events', { employees: eventArray});
+        res.render('events', { events: eventArray});
     }
     eventModel.getAllEvents(renderPage);
 });
