@@ -1,0 +1,2 @@
+1. For first time loading project, run 'npm clean install'
+2. To run the app: 'node app.ctrl.js'
