@@ -39,7 +39,18 @@
                            data-event-name="{{name}}">
                             Delete
                         </a>
-                        <a href="/updateform/{{id}}" role="button" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="#" role="button"
+                           class="btn btn-warning btn-sm edit-btn"
+                           data-bs-toggle="modal"
+                           data-bs-target="#editEventModal"
+                           data-event-id="{{id}}"
+                           data-event-name="{{name}}"
+                           data-event-date="{{formatted_date}}"
+                           data-event-location="{{location}}"
+                           data-event-description="{{description}}"
+                           data-event-max-attendees="{{max_attendees}}">
+                            Edit
+                        </a>
                     </td>
                 </tr>
                 {{/events}}
@@ -56,6 +67,7 @@
     <!-- Modal -->
     {{>delete.modal}}
     {{>eventform.modal}}
+    {{>editevent.modal}}
 
 </div>
 

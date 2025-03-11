@@ -36,6 +36,12 @@ app.get('/event/add', function (req, res){
     eventModel.addEvent(req.query, returnHome);
 });
 
+// Update single event
+app.get('/event/update/:id', function (req, res){
+    function returnHome() {res.redirect('/');}
+    eventModel.updateEvent(req.query, req.params.id, returnHome);
+})
+
 // App startup
 async function startup() {
     app.listen(8081, function () {

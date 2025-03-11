@@ -1,0 +1,44 @@
+<!-- Edit Event Modal -->
+<div class="modal fade" id="editEventModal" tabindex="-1" aria-labelledby="editEventModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editEventModalLabel">Edit Event <strong id="editModalName"></strong> </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="get" id="editEventForm">
+                    <input type="hidden" id="editEventId" name="id">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="editName" class="form-label">Event Name</label>
+                            <input type="text" id="editName" name="name" class="form-control" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="editMaxAttendees" class="form-label">Max Attendees</label>
+                            <input type="number" id="editMaxAttendees" name="max_attendees" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="editDate" class="form-label">Date</label>
+                            <input type="date" id="editDate" name="date" class="form-control" value="2025-06-15 00:00:00" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="editLocation" class="form-label">Location</label>
+                            <input type="text" id="editLocation" name="location" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editDescription" class="form-label">Description</label>
+                        <textarea id="editDescription" name="description" class="form-control" required></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-warning">Update Event</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

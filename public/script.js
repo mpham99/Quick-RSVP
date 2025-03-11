@@ -17,3 +17,32 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+// Handle edit events
+document.addEventListener("DOMContentLoaded", function () {
+    const editButtons = document.querySelectorAll(".edit-btn");
+
+    editButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            // Get event details from data attributes
+            const eventId = this.getAttribute("data-event-id");
+            const eventName = this.getAttribute("data-event-name");
+            const eventDate = this.getAttribute("data-event-date");
+            const eventLocation = this.getAttribute("data-event-location");
+            const eventDescription = this.getAttribute("data-event-description");
+            const eventMaxAttendees = this.getAttribute("data-event-max-attendees");
+
+            // Populate modal fields
+            document.getElementById("editModalName").textContent = eventName;
+            document.getElementById("editEventId").value = eventId;
+            document.getElementById("editName").value = eventName;
+            document.getElementById("editDate").value = eventDate;
+            document.getElementById("editLocation").value = eventLocation;
+            document.getElementById("editDescription").value = eventDescription;
+            document.getElementById("editMaxAttendees").value = eventMaxAttendees;
+
+            // Update form action to submit to the correct update endpoint
+            document.getElementById("editEventForm").action = "/event/update/" + eventId;
+        });
+    });
+});
