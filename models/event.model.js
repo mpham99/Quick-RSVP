@@ -3,13 +3,13 @@ var db = new sqlite3.Database("database/app.db");
 
 // Get all events
 function getAllEvents(callback) {
-    db.all("SELECT id, name, description, date, datetime(date) as formatted_date, location, max_attendees FROM event",
+    db.all("SELECT id, name, description, date, date(date) as formatted_date, location, max_attendees FROM event",
         function (err, results) { callback(results); });
 }
 
 // Get an event by ID
 function getEventById(id, callback) {
-    db.get("SELECT id, name, description, date, datetime(date) as formatted_date, location, max_attendees FROM event WHERE id=?",
+    db.get("SELECT id, name, description, date, date(date) as formatted_date, location, max_attendees FROM event WHERE id=?",
         [id],
         function (err, result) { callback(result); });
 }
