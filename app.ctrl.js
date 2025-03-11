@@ -6,7 +6,6 @@ const rsvpModel = require('./models/rsvp.model');
 const express = require("express");
 const app = express();
 app.use(express.json());
-const path = require('path');
 app.use(express.static(__dirname + "/public"));
 
 // Initialize mustache
@@ -46,10 +45,20 @@ app.get('/event/update/:id', function (req, res){
 // Get all RSVP for a single event
 app.get('/event/rsvps/:event_id', function (req, res) {
     function renderPage(rsvpsArray) {
-        res.render('rsvps', { rsvps: rsvpsArray});
+        res.render('rsvps', { rsvps: rsvpsArray, event_id: req.params.event_id});
     }
     rsvpModel.getRSVPsByEvent(req.params.event_id, renderPage);
 })
+
+// Add RSVP for a single event
+app.get('/rsvps/add', function(req, res) {
+    function returnHome() {res.redirect('/event/rsvps/' + req.query.event_id);}
+    rsvpModel.addRSVP(req.query, returnHome);
+})
+
+app.get(/^(.+)$/, function(req,res) {
+    res.sendFile(__dirname + req.params[0]);
+});
 
 // App startup
 async function startup() {
