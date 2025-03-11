@@ -15,7 +15,7 @@ app.engine("mustache", mustacheExpress());
 app.set("view engine", "mustache");
 app.set("views", __dirname + "/views");
 
-// ************************* CONTROLLER ACTIONS ****************************
+// ************************* EVENTS ****************************
 // Default action
 app.get('/', function(req,res) {
     function renderPage(eventArray) {
@@ -40,6 +40,15 @@ app.get('/event/add', function (req, res){
 app.get('/event/update/:id', function (req, res){
     function returnHome() {res.redirect('/');}
     eventModel.updateEvent(req.query, req.params.id, returnHome);
+})
+
+// ************************* RSVPS ****************************
+// Get all RSVP for a single event
+app.get('/event/rsvps/:event_id', function (req, res) {
+    function renderPage(rsvpsArray) {
+        res.render('rsvps', { rsvps: rsvpsArray});
+    }
+    rsvpModel.getRSVPsByEvent(req.params.event_id, renderPage);
 })
 
 // App startup

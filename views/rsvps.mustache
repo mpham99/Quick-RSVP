@@ -1,0 +1,64 @@
+{{>header}}
+
+<div class="container mt-4">
+    <h1 class="mb-3">RSVPs for Event {{eventId}}</h1>
+
+    <!-- RSVP List Table -->
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Attendees</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#rsvps}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{email}}</td>
+                    <td>{{attendees}}</td>
+                    <td>
+                        <a href="/rsvps/delete/{{id}}" class="btn btn-danger btn-sm">Remove</a>
+                    </td>
+                </tr>
+            {{/rsvps}}
+            {{^rsvps}}
+                <tr>
+                    <td colspan="4" class="text-center">No RSVP yet</td>
+                </tr>
+            {{/rsvps}}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add RSVP Form -->
+    <div class="card mt-4">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">RSVP for Event {{eventId}}</h4>
+        </div>
+        <div class="card-body">
+            <form action="/rsvps/add" method="get">
+                <input type="hidden" name="event_id" value="{{eventId}}">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="attendees" class="form-label">Number of Attendees</label>
+                    <input type="number" id="attendees" name="attendees" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">RSVP</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+{{>footer}}
