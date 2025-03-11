@@ -56,6 +56,12 @@ app.get('/rsvps/add', function(req, res) {
     rsvpModel.addRSVP(req.query, returnHome);
 })
 
+// Delete RSVP for a single event
+app.get('/rsvps/delete/:id', function(req, res) {
+    function returnHome() {res.redirect('/event/rsvps/' + req.query.eventId);}
+    rsvpModel.deleteRSVP(req.params.id, returnHome)
+})
+
 app.get(/^(.+)$/, function(req,res) {
     res.sendFile(__dirname + req.params[0]);
 });
