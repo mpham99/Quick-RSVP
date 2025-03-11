@@ -46,3 +46,23 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+// Handle search function
+document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("searchInput");
+    const rows = document.querySelectorAll("tbody tr");
+
+    searchInput.addEventListener("keyup", function () {
+        const query = searchInput.value.toLowerCase();
+
+        rows.forEach(row => {
+            const eventName = row.querySelector("td:nth-child(1)").textContent.toLowerCase();
+
+            if (eventName.includes(query)) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        });
+    });
+});
