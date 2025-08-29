@@ -5,6 +5,7 @@ db.serialize(function () {
     // Drop existing tables if they exist
     db.run("DROP TABLE IF EXISTS event");
     db.run("DROP TABLE IF EXISTS rsvp");
+    db.run("DROP TABLE IF EXISTS users");
 
     // Create event table
     db.run(`CREATE TABLE event (
@@ -24,6 +25,15 @@ db.serialize(function () {
       email TEXT NOT NULL,
       attendees INTEGER NOT NULL,
       FOREIGN KEY (event_id) REFERENCES event(id) ON DELETE CASCADE
+    )`);
+
+    // Create users table
+    db.run(`CREATE TABLE users (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      email TEXT NOT NULL UNIQUE,
+      password_hash TEXT NOT NULL,
+      created_at TEXT DEFAULT (datetime('now'))
     )`);
 
     // Function to insert an event with Julian date conversion in SQL
