@@ -67,7 +67,7 @@ function verifyUser(email, password, callback) {
                 return callback(null, null);
             }
             // Do not expose password_hash to callers
-            callback(null, { id: user.id, name: user.name, email: user.email });
+            callback(null, { id: user.id, name: user.name, email: user.email, role: user.role });
         });
     });
 }

@@ -3,6 +3,7 @@ const eventModel = require('./models/event.model');
 const rsvpModel = require('./models/rsvp.model');
 const userModel = require('./models/user.model');
 const config = require('./infra/config');
+const { setCurrentUser, isAuthenticated } = require('./util/auth');
 
 // Initialize express
 const express = require("express");
@@ -23,18 +24,7 @@ app.use(session({
 }));
 
 // Expose currentUser to templates
-app.use(function (req, res, next) {
-    res.locals.currentUser = req.session && req.session.user ? req.session.user : null;
-    next();
-});
-
-// Auth guard
-function isAuthenticated(req, res, next) {
-    if (req.session && req.session.user) {
-        return next();
-    }
-    res.redirect('/login');
-}
+app.use(setCurrentUser);
 
 // Initialize mustache
 const mustacheExpress = require("mustache-express");
