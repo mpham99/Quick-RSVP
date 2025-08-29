@@ -33,10 +33,20 @@
     }
 </style>
 
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-light bg-light px-3 d-flex justify-content-between">
     <a class="navbar-brand" href="/">
         <img src='/icon.svg' width="30" height="30" alt="">
         Quick RSVP
     </a>
+    <div class="d-flex align-items-center gap-2">
+        {{#currentUser}}
+        <span class="text-muted">Hello, {{name}}</span>
+        <a class="btn btn-outline-secondary btn-sm" href="/logout">Logout</a>
+        {{/currentUser}}
+        {{^currentUser}}
+        <a class="btn btn-outline-primary btn-sm" href="/login">Login</a>
+        <a class="btn btn-primary btn-sm" href="/register">Register</a>
+        {{/currentUser}}
+    </div>
 </nav>
 <body>
