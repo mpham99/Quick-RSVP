@@ -98,7 +98,7 @@ app.get('/logout', function (req, res) {
 
 // ************************* EVENTS ****************************
 // Default action
-app.get('/', function(req,res) {
+app.get('/', isAuthenticated, function(req,res) {
     function renderPage(eventArray) {
         res.render('events', { events: eventArray});
     }
