@@ -142,8 +142,8 @@ This project is licensed under the MIT License - check out the [LICENSE](LICENSE
 
 ## 🔮 What I Want to Add Next
 
-- [ ] User accounts and login system
-- [ ] Proper REST API (POST/PUT/DELETE instead of just GET)
+- [x] User accounts and login system
+- [x] Proper REST API (POST/PUT/DELETE instead of just GET)
 - [ ] Email notifications when people RSVP
 - [ ] Event categories and tags
 - [ ] Calendar view to see all events

@@ -10,8 +10,8 @@ function createUser(user, callback) {
             return callback(err);
         }
         db.run(
-            "INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)",
-            [user.name, user.email, hash],
+            "INSERT INTO users (name, email, password_hash, role) VALUES (?, ?, ?, ?)",
+            [user.name, user.email, hash, 'user'],
             function (runErr) {
                 if (runErr) {
                     return callback(runErr);

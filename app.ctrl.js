@@ -44,7 +44,6 @@ app.set("views", __dirname + "/views");
 
 // ************************* AUTH ****************************
 app.get('/register', function (req, res) {
-    console.log(config.secrets.cookie);
     res.render('register', { });
 });
 
